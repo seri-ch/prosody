@@ -144,7 +144,7 @@ export default function LandingPage() {
           className="max-w-3xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.1 }}
         >
           <Card className="gradient-border glow p-8">
             <div className="flex items-end justify-center gap-1 h-24 mb-6">

@@ -39,12 +39,12 @@
   }
 
   html {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* old Edge/IE */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, newer Edge */
+    display: none;
   }
 }
 
@@ -84,7 +84,7 @@
   }
 
   .waveform-bar {
-    animation: wave 0.8s ease-in-out infinite backwards;
+    animation: wave 0.8s ease-in-out infinite;
     transform-origin: bottom;
   }
 
