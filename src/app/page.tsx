@@ -144,7 +144,7 @@ export default function LandingPage() {
           className="max-w-3xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.5 }}
         >
           <Card className="gradient-border glow p-8">
             <div className="flex items-end justify-center gap-1 h-24 mb-6">
@@ -154,7 +154,7 @@ export default function LandingPage() {
                   className="w-1.5 bg-accent/60 rounded-full waveform-bar"
                   style={{
                     height: `${20 + Math.sin(i * 0.4) * 30 + Math.random() * 20}%`,
-                    animationDelay: `${i * 0.05}s`,
+                    animationDelay: `${i * 0.06}s`,
                   }}
                 />
               ))}
