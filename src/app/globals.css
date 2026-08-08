@@ -84,7 +84,7 @@
   }
 
   .waveform-bar {
-    animation: wave 1.2s ease-in-out infinite;
+    animation: wave 0.8s ease-in-out infinite backwards;
     transform-origin: bottom;
   }
 
