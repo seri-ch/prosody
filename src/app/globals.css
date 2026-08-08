@@ -32,6 +32,20 @@
     background: var(--color-accent);
     color: white;
   }
+
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+
+  html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* old Edge/IE */
+  }
+
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, newer Edge */
+  }
 }
 
 @layer utilities {
