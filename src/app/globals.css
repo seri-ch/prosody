@@ -85,13 +85,8 @@
 
   .waveform-bar {
     animation: wave 1.2s ease-in-out infinite;
+    transform-origin: bottom;
   }
-
-  .waveform-bar:nth-child(2n) { animation-delay: 0.1s; }
-  .waveform-bar:nth-child(3n) { animation-delay: 0.2s; }
-  .waveform-bar:nth-child(4n) { animation-delay: 0.15s; }
-  .waveform-bar:nth-child(5n) { animation-delay: 0.3s; }
-  .waveform-bar:nth-child(7n) { animation-delay: 0.05s; }
 
   @keyframes wave {
     0%, 100% { transform: scaleY(0.3); }

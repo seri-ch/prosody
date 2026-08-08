@@ -72,7 +72,7 @@ const modes = [
 ];
 
 const metrics = [
-  { label: "Filler Words", value: "↓ 67%", sub: "avg. reduction in 30 days" },
+  { label: "Filler Words", value: "↓ 42%", sub: "avg. reduction in 30 days" },
   { label: "Speech Rate", value: "145 WPM", sub: "ideal conversational pace" },
   { label: "Confidence Score", value: "+34pts", sub: "avg. improvement" },
   { label: "Daily Streak", value: "21 days", sub: "median active streak" },
