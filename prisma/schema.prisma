@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String    @id @default(uuid())
+  name            String?
+  email           String?   @unique
+  streakCount     Int       @default(0)
+  longestStreak   Int       @default(0)
+  lastPracticeDate DateTime?
+  streakFreezes   Int       @default(1)
+  baselineMetrics String?   // JSON: personal baseline calibration
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  sessions        Session[]
+  badges          UserBadge[]
+  challengeCompletions ChallengeCompletion[]
+}
+
+model Session {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mode            String   // impromptu, prepared, debate, interview, storytelling, smalltalk, rapidfire
+  topic           String
+  primer          String?
+  transcript      String?
+  audioPath       String?
+  durationSeconds Float?
+  metrics         String?  // JSON: all delivery + content metrics
+  feedback        String?  // JSON: structured feedback
+  focusPoint      String?  // single actionable focus for next session
+  reflection      String?
+  createdAt       DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model Badge {
+  id          String      @id @default(uuid())
+  slug        String      @unique
+  name        String
+  description String
+  icon        String
+  metric      String?     // which metric triggers it
+  threshold   Float?
+  users       UserBadge[]
+}
+
+model UserBadge {
+  id        String   @id @default(uuid())
+  userId    String
+  badgeId   String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badge     Badge    @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+  earnedAt  DateTime @default(now())
+
+  @@unique([userId, badgeId])
+}
+
+model DailyChallenge {
+  id        String   @id @default(uuid())
+  date      String   @unique // YYYY-MM-DD
+  topic     String
+  primer    String
+  category  String
+  createdAt DateTime @default(now())
+  completions ChallengeCompletion[]
+}
+
+model ChallengeCompletion {
+  id          String         @id @default(uuid())
+  userId      String
+  challengeId String
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  challenge   DailyChallenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  sessionId   String?
+  completedAt DateTime       @default(now())
+
+  @@unique([userId, challengeId])
+}
